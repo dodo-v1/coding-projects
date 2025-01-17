@@ -1,0 +1,184 @@
+#weighted and Unweighted GPA calculator
+#asks user if they want to calculate GPA and if they want weighted or unweighted
+weighted_or_unweighted = input("Would you like to calculate your Weighted or Unweighted GPA (weighted or unweighted)\n")
+#list initialized for later use in GPA calculations
+course_points_list = []
+def get_course_info_weighted():
+    number_of_classes = int(input("How many classes will you be callculating?\n"))
+    course_list = []
+    for i in range(number_of_classes):
+        course_info = []
+        course_type = input("What type of class is this?(Regular, Honors, AP/OnRamps)\n")
+        course_info.append(course_type)
+        course_grade = int(input("What grade do you have in this class?(type the grade percent no % symbol)\n"))
+        if course_grade >= 97:
+            course_grade = "A+"
+        elif 96 >= course_grade >= 93:
+            course_grade = "A"
+        elif 92 >= course_grade >= 90:
+            course_grade = "A-"
+        elif 89 >= course_grade >= 87:
+            course_grade = "B+"
+        elif 86 >= course_grade >= 83:
+            course_grade = "B"  
+        elif 82 >= course_grade >= 80:
+            course_grade = "B-"
+        elif 79 >= course_grade >= 77:
+            course_grade = "C+"
+        elif 76 >= course_grade >= 73:
+            course_grade = "C" 
+        elif 72 >= course_grade >= 70:
+            course_grade = "C-" 
+        elif 69 >= course_grade >= 67:
+            course_grade = "D+"     
+        elif 66 >= course_grade:
+            course_grade = "D"     
+        course_info.append(course_grade)
+        course_list.append(course_info)
+    return course_list, number_of_classes
+        
+def get_course_info_unweighted():
+    number_of_classes = int(input("How many classes will you be callculating?\n"))
+    course_list = []
+    for i in range(number_of_classes):
+        course_info = []
+        course_grade = int(input("What grade do you have in this class?(type the grade percent no % symbol)\n"))
+        if course_grade >= 97:
+            course_grade = "A+"
+        elif 96 >= course_grade >= 93:
+            course_grade = "A"
+        elif 92 >= course_grade >= 90:
+            course_grade = "A-"
+        elif 89 >= course_grade >= 87:
+            course_grade = "B+"
+        elif 86 >= course_grade >= 83:
+            course_grade = "B"  
+        elif 82 >= course_grade >= 80:
+            course_grade = "B-"
+        elif 79 >= course_grade >= 77:
+            course_grade = "C+"
+        elif 76 >= course_grade >= 73:
+            course_grade = "C" 
+        elif 72 >= course_grade >= 70:
+            course_grade = "C-" 
+        elif 69 >= course_grade >= 67:
+            course_grade = "D+"     
+        elif 66 >= course_grade:
+            course_grade = "D"     
+        course_info.append(course_grade)
+        course_list.append(course_info)
+    return course_list, number_of_classes
+    
+def get_weighted_course_points(course_list):
+    for i in range(len(course_list)):    
+        if "AP" in course_list[i][0] or "OnRamps" in course_list[i][0]:
+            if "A+" in course_list[i][1]:
+                course_points_list.append(5.0)
+            elif "A" in course_list[i][1]:
+                course_points_list.append(4.8)
+            elif "A-" in course_list[i][1]:                
+                course_points_list.append(4.6)
+            elif "B+" in course_list[i][1]:
+                course_points_list.append(4.4)
+            elif "B" in course_list[i][1]:
+                course_points_list.append(4.2)
+            elif "B-" in course_list[i][1]:
+                course_points_list.append(4.0)
+            elif "C+" in course_list[i][1]:
+                course_points_list.append(3.8)
+            elif "C" in course_list[i][1]:
+                course_points_list.append(3.6)
+            elif "C-" in course_list[i][1]:
+                course_points_list.append(3.4)
+            elif "D+" in course_list[i][1]:
+                course_points_list.append(3.0)
+            elif "D" in course_list[i][1]:    
+                course_points_list.append(0)
+        elif "Honors" in course_list[i][0]:
+            if "A+" in course_list[i][1]:
+                course_points_list.append(4.5)
+            elif "A" in course_list[i][1]:
+                course_points_list.append(4.3)
+            elif "A-" in course_list[i][1]:
+                course_points_list.append(4.1)
+            elif "B+" in course_list[i][1]:
+                course_points_list.append(3.9)
+            elif "B" in course_list[i][1]:
+                course_points_list.append(3.7)
+            elif "B-" in course_list[i][1]:
+                course_points_list.append(3.5)
+            elif "C+" in course_list[i][1]:
+                course_points_list.append(3.3)
+            elif "C" in course_list[i][1]:
+                course_points_list.append(3.1)
+            elif "C-" in course_list[i][1]:
+                course_points_list.append(2.9)
+            elif "D+" in course_list[i][1]:
+                course_points_list.append(2.5)
+            elif "D" in course_list[i][1]:
+                course_points_list.append(0)
+        elif "Regular" in course_list[i][0]:
+            if "A+" in course_list[i][1]:
+                course_points_list.append(4.0)
+            elif "A" in course_list[i][1]:
+                course_points_list.append(3.8)
+            elif "A-" in course_list[i][1]:
+                course_points_list.append(3.6)
+            elif "B+" in course_list[i][1]:
+                course_points_list.append(3.4)
+            elif "B" in course_list[i][1]:
+                course_points_list.append(3.2)
+            elif "B-" in course_list[i][1]:
+                course_points_list.append(3.0)
+            elif "C+" in course_list[i][1]:
+                course_points_list.append(2.8)
+            elif "C" in course_list[i][1]:
+                course_points_list.append(2.6)
+            elif "C-" in course_list[i][1]:
+                course_points_list.append(2.4)
+            elif "D+" in course_list[i][1]:
+                course_points_list.append(2.0)
+            elif "D" in course_list[i][1]:
+                course_points_list.append(0)
+                
+def get_unweighted_course_points(course_list):
+    for i in range(len(course_list)):
+        if "A+" in course_list[i][0]:
+            course_points_list.append(4.0)
+        elif "A" in course_list[i][0]:
+            course_points_list.append(3.8)
+        elif "A-" in course_list[i][0]:
+            course_points_list.append(3.6)
+        elif "B+" in course_list[i][0]:
+            course_points_list.append(3.4)
+        elif "B" in course_list[i][0]:
+            course_points_list.append(3.2)
+        elif "B-" in course_list[i][0]:
+            course_points_list.append(3.0)
+        elif "C+" in course_list[i][0]:
+            course_points_list.append(2.8)
+        elif "C" in course_list[i][0]:
+            course_points_list.append(2.6)
+        elif "C-" in course_list[i][0]:
+            course_points_list.append(2.4)
+        elif "D+" in course_list[i][0]:
+            course_points_list.append(2.0)
+        elif "D" in course_list[i][0]:
+            course_points_list.append(0)
+        
+def calculate_gpa(course_points_list, number_of_classes):
+    total_points = float(sum(course_points_list))
+    gpa = total_points/number_of_classes
+    rounded_gpa = round(gpa, 2)
+    print("Your gpa is " + str(rounded_gpa))
+
+if weighted_or_unweighted == "weighted":
+    course_list, number_of_classes = get_course_info_weighted()
+    get_weighted_course_points(course_list)
+    calculate_gpa(course_points_list, number_of_classes)
+elif weighted_or_unweighted == "unweighted":
+    course_list, number_of_classes = get_course_info_unweighted()
+    get_unweighted_course_points(course_list)
+    calculate_gpa(course_points_list, number_of_classes)
+else:
+    print("goodbye.")
